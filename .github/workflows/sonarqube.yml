@@ -32,17 +32,16 @@ jobs:
         path: ~/.sonar/cache
         key: ${{ runner.os }}-sonar
 
-    - name: Run SonarQube Scanner
+    - name: Run Sonar Scanner
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       run: |
         curl -sSLo sonar-scanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-5.0.1.3006-linux.zip
-        unzip sonar-scanner.zip
-        ./sonar-scanner-*/bin/sonar-scanner \
+        unzip -o sonar-scanner.zip
+        cd sonar-scanner-*/bin
+        ./sonar-scanner \
           -Dsonar.projectKey=sonar-python-sample \
           -Dsonar.sources=. \
-          -Dsonar.tests=. \
-          -Dsonar.python.version=3 \
-          -Dsonar.login=$SONAR_TOKEN \
-          -Dsonar.host.url=http://localhost:9000 \
-          -Dsonar.junit.reportPaths=report.xml
+          -Dsonar.host.url=https://cab4-202-53-171-14.ngrok-free.app \
+          -Dsonar.login=$SONAR_TOKEN
+
