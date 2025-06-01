@@ -42,7 +42,6 @@ jobs:
         ./sonar-scanner \
           -Dsonar.projectKey=sonar-python-sample \
           -Dsonar.sources=. \
-          -Dsonar.branch.name=master 
           -Dsonar.host.url=https://cab4-202-53-171-14.ngrok-free.app \
           -Dsonar.login=sqp_2c0e4c599f4a7365c36e9589111c5142cd5c2d30
 
